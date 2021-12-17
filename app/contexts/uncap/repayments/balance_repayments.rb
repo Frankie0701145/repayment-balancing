@@ -29,8 +29,12 @@ module Uncap
               # if the amount is more than the amount_received the balance will be positive.
               # This is the repayment balance.
               balance = repayment[:amount] - repayment[:amount_received]
-              # remove the balance amount from the balancing_amount and then add the balance
-              # to the amount_received
+              # minus the balance amount from the balancing_amount and then add the balance
+              # to the amount_received. 
+              # When the balance is positive that means the amount_received is short so we will reduce the balancing_amount
+              # and add the reduced amount to the amount_received
+              # When the balance is negative that means the amount_received is more so we will increase the balancing_amount
+              # and reduce the amount_receive
               # minus the balance from the balancing_amount
               balancing_amount -= balance
               # add the balance to the amount_received
