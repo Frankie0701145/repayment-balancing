@@ -30,15 +30,16 @@ module Uncap
               # This is the repayment balance.
               balance = repayment[:amount] - repayment[:amount_received]
               # minus the balance amount from the balancing_amount and then add the balance
-              # to the amount_received. 
-              # When the balance is positive that means the amount_received is short so we will reduce the balancing_amount
-              # and add the reduced amount to the amount_received
-              # When the balance is negative that means the amount_received is more so we will increase the balancing_amount
-              # and reduce the amount_receive
+              # to the amount_received.
+              # When the balance is positive that means the amount_received is short so we will
+              # reduce the balancing_amount and add the reduced amount to the amount_received
+              # When the balance is negative that means the amount_received is more so we will
+              # increase the balancing_amount and reduce the amount_receive
               # minus the balance from the balancing_amount
               balancing_amount -= balance
               # add the balance to the amount_received
               repayment[:amount_received] += balance
+              # repayment[:date_received] = date_received # I am not sure if I am supposed to change the date_received
               # return the repayment
               repayment
             end
